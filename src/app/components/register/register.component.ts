@@ -19,20 +19,20 @@ import { environment } from '../../../environments/environment.prod';
 
 export class RegisterComponent {
   
-  body = {
-    username: '123213213',
-    password: '123123123',
-    passwordConfirm: '123123123',
+  body = { //Para testes
+    username: 'antonio',
+    password: 'gehrke',
+    passwordConfirm: 'senha123',
     acceptTerms: true,
-    cpf: '000.000.000-14',
-    cellPhone: '55981183583',
-    street: 'Adasad',
+    cpf: '000.000.000-00', //Removido, precisa ser valido
+    cellPhone: '5599990000', //Removido, precisa ser valido para receber SMS
+    street: 'rua',
     number: '10',
-    city: 'asdssad',
-    postalCode: '96990000',
+    city: 'cidade',
+    postalCode: '90900000',
     state: 'rs',
-    neighborhood: 'centr',
-    complement: 'adsdsaads'
+    neighborhood: 'centro',
+    complement: 'casa'
   }
 
   // Variáveis para controle de etapas do registro e validações
