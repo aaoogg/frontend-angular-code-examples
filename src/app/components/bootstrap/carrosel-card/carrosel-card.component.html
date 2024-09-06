@@ -1,0 +1,25 @@
+<div [id]="carouselId" class="carousel slide">
+  <div class="carousel-inner">
+    <div *ngFor="let page of pages; let pageIndex = index" class="carousel-item" [ngClass]="{'active': pageIndex === 0}">
+      <div class="cards-wrapper">
+        <div *ngFor="let card of page" class="card">
+          <div class="card-tab">186 LOTES</div>
+          <img [src]="card.image" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{card.title}}</h5>
+            <p class="card-text">{{card.text}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev custom-carousel-control" type="button" [attr.data-bs-target]="'#' + carouselId" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next custom-carousel-control" type="button" [attr.data-bs-target]="'#' + carouselId" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

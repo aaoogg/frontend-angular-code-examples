@@ -1,0 +1,134 @@
+<!-- Registration 4 - Bootstrap Brain Component -->
+<section class="p-3 p-md-4 p-xl-5">
+  <div class="container">
+    <div class="card border-light-subtle shadow-sm">
+      <div class="row g-0">
+        <div class="col-12 col-md-6">
+          <img class="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy" src="./assets/images/ft6.jpg"
+            alt="BootstrapBrain Logo">
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card-body p-3 p-md-4 p-xl-5">
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-5">
+                  <h2 class="h3">Registration</h2>
+                  <h3 class="fs-6 fw-normal text-secondary m-0">Enter your details to register</h3>
+                </div>
+              </div>
+            </div>
+            <form (ngSubmit)="submitForm()">
+              <div class="row gy-3 gy-md-4 overflow-hidden">
+                <ng-container *ngIf="firstRegister && !secondRegister && !thirdRegister">
+                  <div class="col-12">
+                    <label for="firstName" class="form-label">Full name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="body.username" id="username"
+                      placeholder="Full Name" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="cellPhone" class="form-label">cellPhone <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="cellPhone" [(ngModel)]="body.cellPhone" id="cellPhone"
+                      placeholder="(00) 00000-0000" (input)="formatCellPhone()" maxlength="15" required>
+                    <!-- Mensagem de alerta -->
+                    <div class="text-danger mt-1">
+                      <small>Atenção: Esse telefone deve estar apto a receber SMSs.</small>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label for="cpf" class="form-label">CPF <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="cpf" [(ngModel)]="body.cpf" id="cpf" placeholder="CPF"
+                      (input)="formatCpf()" (blur)="validateCpf()" maxlength="11" required>
+                  </div>
+                  <div class="col-12">
+                    <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" name="password" [(ngModel)]="body.password" id="password"
+                      required>
+                  </div>
+                  <div class="col-12">
+                    <label for="passwordConfirm" class="form-label">Repeat Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" name="passwordConfirm" [(ngModel)]="body.passwordConfirm"
+                      id="passwordConfirm" required>
+                  </div>
+                  <div class="col-12">
+                    <re-captcha (resolved)="handleRecaptcha($event)" siteKey="codigo captcha removido"></re-captcha>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" [(ngModel)]="body.acceptTerms" name="iAgree"
+                        id="iAgree" required>
+                      <label class="form-check-label text-secondary" for="iAgree">
+                        I agree to the <a href="#!" class="link-primary text-decoration-none">terms and conditions</a> <span class="text-danger"> *</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-12 text-danger">
+                    {{ errorMessage }}
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="!thirdRegister && !firstRegister && secondRegister">
+                  <div class="col-12">
+                    <label for="street" class="form-label">Rua <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="street" [(ngModel)]="body.street" id="street" required>
+                  </div>
+                  <div class="col-4">
+                    <label for="number" class="form-label">Número <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" name="number" [(ngModel)]="body.number" id="number" required>
+                  </div>
+                  <div class="col-8">
+                    <label for="city" class="form-label">Cidade <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="city" [(ngModel)]="body.city" id="city" required>
+                  </div>
+                  <div class="col-4">
+                    <label for="state" class="form-label">Estado <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="state" [(ngModel)]="body.state" id="state" required>
+                  </div>
+                  <div class="col-8">
+                    <label for="neighborhood" class="form-label">Bairro <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="neighborhood" [(ngModel)]="body.neighborhood" id="neighborhood"
+                      required>
+                  </div>
+                  <div class="col-8">
+                    <label for="complement" class="form-label">Complemento</label>
+                    <input type="text" class="form-control" name="complement" [(ngModel)]="body.complement" id="complement"
+                      required>
+                  </div>
+                  <div class="col-12">
+                    <div *ngIf="loading" class="text-danger">
+                      Loading...
+                    </div>
+                    <div class="text-danger">
+                      {{ errorMessage }}
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="!firstRegister && !secondRegister && thirdRegister">
+                  <div class="col-12">
+                    <label for="otp" class="form-label">OTP <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="otp" [(ngModel)]="otp" id="otp" placeholder="Enter OTP" maxlength="6" required>
+                  </div>
+                  <div class="col-12 text-danger">
+                    {{ errorMessage }}
+                  </div>
+                </ng-container>
+                <div class="col-12">
+                  <div class="d-grid">
+                    <button class="btn bsb-btn-xl btn-primary" type="submit">
+                      {{ getSubmitButtonText() }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="row">
+              <div class="col-12">
+                <hr class="mt-5 mb-4 border-secondary-subtle">
+                <p class="m-0 text-secondary text-center">Already have an account? <a routerLink="/login"
+                    class="link-primary text-decoration-none">Sign in</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

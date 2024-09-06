@@ -1,0 +1,71 @@
+.cards-wrapper {
+    display: flex;
+    justify-content: center; /* Alinha os cards da esquerda para a direita */
+    flex-wrap: wrap; /* Permite a quebra de linha se necessário */
+  }
+  
+  .card {
+    flex: 1 1 calc(clamp(200px, 25%, 300px) - 10px); /* Adapta a largura conforme o tamanho da tela */
+    margin: 5px;
+    max-width: 300px; /* Ajuste o tamanho máximo conforme necessário */
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: 150px; /* Ajuste a altura conforme necessário */
+    object-fit: cover; /* Mantém a proporção da imagem */
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Garante que o conteúdo do card preencha todo o espaço disponível */
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+  }
+  
+  .card-text {
+    flex: 1;
+  }
+  
+  .btn {
+    align-self: center;
+  }
+
+.carousel-control-prev, .carousel-control-next {
+    width: auto; /* Ajusta a largura do botão */
+    height: auto; /* Ajusta a altura do botão */
+    padding: 10px; /* Ajuste o padding conforme necessário */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 30px; /* Ajusta a largura do ícone */
+    height: 30px; /* Ajusta a altura do ícone */
+    background-color: rgba(0, 0, 0, 0.363);
+}
+
+@media (max-width: 992px) {
+  .card {
+    flex: 1 0 50%; /* Exibe 2 cards por linha em telas médias */
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    flex: 1 0 100%; /* Exibe 1 card por linha em telas pequenas */
+  }
+}
+
+.btn-primary {
+  background-color: rgb(0, 180, 100);
+  border: none;
+}
+
+/* Se você deseja definir uma cor secundária, por exemplo, ao passar o mouse, use pseudo-classes */
+.btn-primary:hover {
+  background-color: rgb(0, 150, 80); /* Cor ao passar o mouse */
+  border: none;
+}
